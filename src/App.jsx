@@ -3,12 +3,12 @@ import {Outlet} from "react-router-dom";
 
 function App() {
 
-  return (
-    <>
-        <Navbar />
-        <Outlet />
-    </>
-  )
+    return (
+        <div className="w-full bg-yellow-500">
+            <Navbar/>
+            <Outlet/>
+        </div>
+    )
 }
 
 export default App
