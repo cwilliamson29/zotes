@@ -1,5 +1,6 @@
 import React from 'react'
 import {sortDirectoriesByName} from "../../helpers/sidebarHelper.js";
+import {useData} from "../../hooks/useData.jsx";
 import DisplayDirectories from "./DisplayDirecories.jsx";
 
 function Sidebar() {
@@ -24,27 +25,10 @@ function Sidebar() {
         },
     ];
 
-    const SortDirectories = (items) => {
-        // const parents = items.filter(item => item.parent_id === null);
-        // const children = items.filter(item => item.parent_id !== "parent");
-        //
-        // const sorted = [];
-        //
-        // for (const parent of parents) {
-        //     sorted.push(parent);
-        //     const childItems = children.filter(child => child.parent_id === parent.id);
-        //     sorted.push(...childItems);
-        // }
-        //
-        // return sorted;
-        const arr = items.sort((a, b) => {
-            if (a.name > b.name) return 1;
-            if (a.name < b.name) return -1;
-            return 0;
-        });
-        return arr;
-    }
-    const sortedDirectories = sortDirectoriesByName(menuItems)
+    const {parents} = useData()
+    console.log(parents)
+    const sortedDirectories = sortDirectoriesByName(parents)
+    //console.log(sortedDirectories)
     return (
         <div className="w-[350px] bg-amber-100 text-black h-full">
             <h2 className="text-lg font-bold pl-2">Notes</h2>
