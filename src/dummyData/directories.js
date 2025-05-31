@@ -10,4 +10,7 @@ export const directories = [
     {name: "D Test sub-Directory", id: 9, parent_id: 1},
     {name: "ATest sub-Directory", id: 10, parent_id: 1},
     {name: "C Test sub-Directory", id: 11, parent_id: 1},
+    {name: "C Sub-Test sub-Directory", id: 12, parent_id: 10},
+    {name: "A Sub-Test sub-Directory", id: 13, parent_id: 10},
+    {name: "A Sub-Test sub-Directory2", id: 14, parent_id: 6},
 ];
