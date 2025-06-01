@@ -11,13 +11,16 @@ function DisplayDirectories({directory}) {
     const sortedDirectories = sortDirectoriesByName(children)
 
     return (
-        <div className="ml-2">
-            <div className="flex flex-row content-center" onClick={() => setExpanded(!expanded)}>
+        <div className={"mx-3 py-1 overflow-hidden "}>
+            <div className="flex flex-row content-center  border-b-1 border-gray-300" onClick={() => setExpanded(!expanded)}>
                 <div className="h-[100%] flex my-auto  pr-1">
                     {expanded ? <FaFolderMinus className="text-blue-700"/> : <FaFolderPlus className="text-blue-900"/>}
                 </div>
 
-                {directory.name} - {directory.parent_id}
+                <p className="truncate text-ellipsis">
+                    {directory.name} - {directory.parent_id}
+                </p>
+
             </div>
 
             <Transition show={expanded} enter="transition ease-in-out duration-150" enterFrom="opacity-0 h-0" enterTo="opacity-100 h-auto"
