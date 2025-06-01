@@ -2,7 +2,8 @@ import {useState} from 'react'
 import {sortDirectoriesByName} from "../../helpers/sidebarHelper.js";
 import {Transition} from "@headlessui/react";
 import {useData} from "../../hooks/useData.jsx";
-import {FaFolderMinus, FaFolderPlus} from "react-icons/fa";
+import {FaFolder, FaFolderOpen} from "react-icons/fa";
+import {CiSquareMinus, CiSquarePlus} from "react-icons/ci";
 
 function DisplayDirectories({directory}) {
     const {children} = useData()
@@ -11,13 +12,24 @@ function DisplayDirectories({directory}) {
     const sortedDirectories = sortDirectoriesByName(children)
 
     return (
-        <div className={"mx-3 py-1 overflow-hidden "}>
-            <div className="flex flex-row content-center  border-b-1 border-gray-300" onClick={() => setExpanded(!expanded)}>
+        <div className={"pl-3 py-1 overflow-hidden "}>
+            <div className="flex flex-row content-center border-b-1 border-gray-300 w-[100%]" onClick={() => setExpanded(!expanded)}>
                 <div className="h-[100%] flex my-auto  pr-1">
-                    {expanded ? <FaFolderMinus className="text-blue-700"/> : <FaFolderPlus className="text-blue-900"/>}
+                    {expanded ?
+                        <>
+                            <CiSquareMinus size="18px" className="mr-1"/>
+                            <FaFolderOpen className="text-blue-700"/>
+                        </>
+                        :
+                        <>
+                            <CiSquarePlus size="18px" className="mr-1"/>
+                            <FaFolder className="text-blue-900"/>
+                        </>
+
+                    }
                 </div>
 
-                <p className="truncate text-ellipsis">
+                <p className="overflow-hidden whitespace-nowrap text-ellipsis">
                     {directory.name} - {directory.parent_id}
                 </p>
 
