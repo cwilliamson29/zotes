@@ -12,9 +12,9 @@ function DisplayDirectories({directory}) {
     const sortedDirectories = sortDirectoriesByName(children)
 
     return (
-        <div className={"pl-3 py-1 overflow-hidden "}>
+        <div className={"pl-3 py-1 overflow-hidden text-white"}>
             <div className="flex flex-row content-center border-b-1 border-gray-300 w-[100%]" onClick={() => setExpanded(!expanded)}>
-                <div className="h-[100%] flex my-auto  pr-1">
+                <div className="flex my-auto  pr-1">
                     {expanded ?
                         <>
                             <CiSquareMinus size="18px" className="mr-1"/>

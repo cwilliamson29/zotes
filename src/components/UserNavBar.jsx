@@ -1,36 +1,53 @@
-import React from 'react'
+import React, {useState} from 'react'
+import {CgMenuGridR} from "react-icons/cg";
 import {Link} from "react-router-dom";
+import {IoMdClose} from "react-icons/io";
 
 function UserNavBar() {
-    const sm = ""
-    const md = ""
-    const lg = " p-3 border-b-1 border-blue-500 ml-2 cursor-pointer hover:bg-gray-800"
+    const [isOpen, setIsOpen] = useState(false);
+    const sm = "border-b-1 border-gray-500 block px-2 py-2 rounded hover:bg-blue-800"
+    const lg = " lg:p-3 border-b-1 border-blue-500 lg:ml-2 cursor-pointer hover:bg-gray-800 hover:text-blue-300 transition duration-200"
     const menuItems = [
         {name: 'Home', link: '/'},
         {name: 'Notes', link: '/user'},
         {name: 'Docs', link: '/docs'},
-        {name: 'Help', link: '/help'}
+        {name: 'Help', link: '/help'},
+        {name: 'Profile', link: '/user/profile'}
     ]
     return (
-        <div className="flex justify-between w-full pb-2 border-b-1 border-gray-800">
-            <div className="flex">
-                <h2 className="m-auto px-4 py-3 bg-blue-500">Zotes</h2>
-
-                {menuItems.map(menuItem => (
-                    <Link to={menuItem.link} key={menuItem.name}>
-                        <div className={sm + md + lg}>{menuItem.name}</div>
-                    </Link>
-                ))}
-
+        <nav className="flex flex-col md:flex-row justify-between w-full pb-2 border-b-1 bg-gray-900 border-blue-500">
+            {/* Logo */}
+            <div className="flex flex-row justify-between w-full h-full">
+                <div className="text-2xl font-bold tracking-wide ml-2 h-full m-auto">Zotes</div>
+                <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? <IoMdClose size={28}/> : <CgMenuGridR size={28}/>}
+                </button>
             </div>
 
-            <div className="">
-                <Link to={"/user/profile"}>
-                    <div className={sm + md + lg}>Profile</div>
-                </Link>
+            {/* Desktop Nav Links */}
+            <div className="max-w-7xl mx-auto flex flex-col justify-between items-center">
+                <div className="hidden md:flex space-x-6">
+                    {menuItems.map((menuItem) => (
+                        <Link to={menuItem.link} key={menuItem.name}>
+                            <div className={lg}>{menuItem.name}</div>
+                        </Link>
+                    ))}
+                </div>
             </div>
 
-        </div>
+            {/* Mobile Menu */}
+            {isOpen && (
+                <div className="md:hidden mt-4 space-y-3">
+                    {menuItems.map((menuItem) => (
+                        <Link to={menuItem.link} key={menuItem.name}>
+                            <div className={sm}>{menuItem.name}</div>
+                        </Link>
+                    ))}
+                </div>
+            )}
+
+
+        </nav>
     )
 }
 
