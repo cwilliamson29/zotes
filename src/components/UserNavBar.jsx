@@ -6,7 +6,7 @@ import {IoMdClose} from "react-icons/io";
 function UserNavBar() {
     const [isOpen, setIsOpen] = useState(false);
     const sm = "border-b-1 border-gray-500 block px-2 py-2 rounded hover:bg-blue-800"
-    const lg = " lg:p-3 border-b-1 border-blue-500 lg:ml-2 cursor-pointer hover:bg-gray-800 hover:text-blue-300 transition duration-200"
+    const lg = " md:p-3 border-b-1 border-blue-500 lg:ml-2 cursor-pointer hover:bg-gray-800 hover:text-blue-300 transition duration-200"
     const menuItems = [
         {name: 'Home', link: '/'},
         {name: 'Notes', link: '/user'},

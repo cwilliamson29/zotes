@@ -4,7 +4,7 @@ import NotesView from "../../components/notes/NotesView.jsx";
 
 function Notes() {
     return (
-        <div className="flex min-h-[calc(100%-58px)] bg-red-300">
+        <div className="xl:flex min-h-[calc(100%-58px)] bg-gray-300">
             <Sidebar/>
             <NotesView/>
         </div>
