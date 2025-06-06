@@ -2,37 +2,40 @@ import {useState} from 'react'
 import {sortDirectoriesByName} from "../../helpers/sidebarHelper.js";
 import {Transition} from "@headlessui/react";
 import {useData} from "../../hooks/useData.jsx";
-import {FaFolder, FaFolderOpen} from "react-icons/fa";
-import {CiSquareMinus, CiSquarePlus} from "react-icons/ci";
+import {MdKeyboardArrowUp, MdOutlineKeyboardArrowDown} from "react-icons/md";
 
-function DisplayDirectories({directory}) {
+function DisplayDirectories({directory, level, padding = 6}) {
     const {children} = useData()
 
     const [expanded, setExpanded] = useState(false);
     const sortedDirectories = sortDirectoriesByName(children)
-
+    const base = " py-1 prr-1 overflow-hidden border-orange-900 border-b-1 shadow-inner text-white "
+    const dirBG = level % 2 === 0 ? "bg-stone-800" : "bg-stone-500"
+    const pad = padding === 0 ? padding + 6 : 0
+    //const nameSpacing = `padding: ${lvlp}px`
+    console.log(pad)
+    //console.log(level !== 1 ? "plb-1 bg-red-300" + base + dirBG : "plb-1 bg-red-300" + base + dirBG)
     return (
-        <div className={"pl-3 py-1 overflow-hidden "}>
-            <div className="flex flex-row content-center border-b-1 border-gray-300 w-[100%]" onClick={() => setExpanded(!expanded)}>
+        <div className={base + dirBG}>
+            <div className="flex flex-row content-center justify-between w-[100%]" onClick={() => setExpanded(!expanded)}>
+                <p className={'pll-[14px] overflow-hidden whitespace-nowrap text-ellipsis'} style={{paddingLeft: `${padding}px`}}>
+                    {directory.name} - {directory.parent_id}
+                </p>
+
                 <div className="flex my-auto  pr-1">
                     {expanded ?
                         <>
-                            <CiSquareMinus size="18px" className="mr-1"/>
-                            <FaFolderOpen className="text-blue-700"/>
+                            <MdKeyboardArrowUp size="18px" className="mr-1 text-orange-700"/>
+                            {/*<FaFolderOpen className="text-blue-700"/>*/}
                         </>
                         :
                         <>
-                            <CiSquarePlus size="18px" className="mr-1"/>
-                            <FaFolder className="text-blue-900"/>
+                            <MdOutlineKeyboardArrowDown size="18px" className="mr-1 text-orange-700"/>
+                            {/*<FaFolder className="text-blue-900"/>*/}
                         </>
 
                     }
                 </div>
-
-                <p className="overflow-hidden whitespace-nowrap text-ellipsis">
-                    {directory.name} - {directory.parent_id}
-                </p>
-
             </div>
 
             <Transition show={expanded} enter="transition ease-in-out duration-150" enterFrom="opacity-0 h-0" enterTo="opacity-100 h-auto"
@@ -40,7 +43,7 @@ function DisplayDirectories({directory}) {
                 <div className="min-w-full">
                     {sortedDirectories.map((child) => {
                             if (child.parent_id === directory.id) {
-                                return (<DisplayDirectories key={child.id} directory={child}/>)
+                                return (<DisplayDirectories key={child.id} directory={child} level={level + 1} padding={padding + 12}/>)
                             }
                         }
                     )

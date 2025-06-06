@@ -5,8 +5,8 @@ import {IoMdClose} from "react-icons/io";
 
 function UserNavBar() {
     const [isOpen, setIsOpen] = useState(false);
-    const sm = "border-b-1 border-gray-500 block px-2 py-2 rounded hover:bg-blue-800"
-    const lg = " md:p-3 border-b-1 border-blue-500 lg:ml-2 cursor-pointer hover:bg-gray-800 hover:text-blue-300 transition duration-200"
+    const sm = "border-b-1 border-orange-800 block px-2 py-2 rounded hover:bg-blue-800"
+    const lg = " md:p-3 border-b-1 border-orange-800 lg:ml-2 cursor-pointer hover:bg-stone-700 hover:text-blue-300 transition duration-200"
     const menuItems = [
         {name: 'Home', link: '/'},
         {name: 'Notes', link: '/user'},
@@ -15,7 +15,7 @@ function UserNavBar() {
         {name: 'Profile', link: '/user/profile'}
     ]
     return (
-        <nav className="flex flex-col md:flex-row justify-between w-full pb-2 border-b-1 bg-gray-900 border-blue-500">
+        <nav className="flex flex-col md:flex-row justify-between w-full pb-2 border-b-1 bg-stone-800 border-orange-950">
             {/* Logo */}
             <div className="flex flex-row justify-between w-full h-full">
                 <div className="text-2xl font-bold tracking-wide ml-2 h-full m-auto">Zotes</div>

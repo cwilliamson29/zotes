@@ -25,7 +25,7 @@ function Sidebar() {
                 </div>
             </div>
 
-            <div className={`fixed xl:static z-30 top-0 left-0 h-full w-80 bg-gray-200 text-black transform transition-transform duration-300 ease-in-out
+            <div className={`fixed xl:static z-30 top-0 left-0 h-full  max-w-[300px] min-w-[300px] text-black transform transition-transform duration-300 ease-in-out
                 ${isOpen ? 'translate-x-0' : '-translate-x-full'} xl:translate-x-0`}>
 
                 <div className="p-2 font-bold text-xl border-b border-gray-700 flex items-center justify-between">
@@ -34,9 +34,9 @@ function Sidebar() {
 
                 </div>
 
-                <div className="flex flex-col p-4 space-y-2">
+                <div className="flex flex-col">
                     {sortedDirectories.map((item) => (
-                        <DisplayDirectories directory={item} key={item.id}/>
+                        <DisplayDirectories directory={item} key={item.id} level={1}/>
                     ))}
                 </div>
             </div>
