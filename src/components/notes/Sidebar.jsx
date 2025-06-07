@@ -14,7 +14,7 @@ function Sidebar() {
 
     return (
         <>
-            <div className="xl:hidden p-2 bg-gray-700 text-whitel flex flex-row justify-between w-full">
+            <div className="xl:hidden p-2 bg-stone-700 text-orange-700 flex flex-row justify-between w-full">
                 <div className="flex" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <RiMenuUnfold4Fill size={24}/> : <RiMenuUnfold3Fill size={24}/>}
                     <p className="ml-1">Open Directories</p>
@@ -25,12 +25,12 @@ function Sidebar() {
                 </div>
             </div>
 
-            <div className={`fixed xl:static z-30 top-0 left-0 h-full  max-w-[300px] min-w-[300px] text-black transform transition-transform duration-300 ease-in-out
+            <div className={`fixed xl:static z-30 top-0 left-0 h-full  max-w-[300px] min-w-[300px] text-white transform transition-transform duration-300 ease-in-out
                 ${isOpen ? 'translate-x-0' : '-translate-x-full'} xl:translate-x-0`}>
 
-                <div className="p-2 font-bold text-xl border-b border-gray-700 flex items-center justify-between">
+                <div className="p-2 font-bold text-xl border-b border-orange-700 flex items-center justify-between">
                     <p>Zotes</p>
-                    {isOpen && <FaWindowClose onClick={() => setIsOpen(false)}/>}
+                    {isOpen && <FaWindowClose color="white" onClick={() => setIsOpen(false)}/>}
 
                 </div>
 
@@ -43,7 +43,7 @@ function Sidebar() {
 
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 xl:hidden"
+                    className="fixed inset-0 bg-stone-900/90 xl:hidden"
                     onClick={() => setIsOpen(false)}
                 ></div>
             )}
